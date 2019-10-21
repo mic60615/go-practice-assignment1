@@ -49,7 +49,7 @@ func peopleFunc(w http.ResponseWriter, req *http.Request) {
 			}
 
 		} else {
-			fmt.Fprintf(w, "we have an error, %s", err)
+			fmt.Fprintf(w, "Failed to Marshal the map: %s", err)
 		}
 	} else if req.Method == http.MethodPost {
 		b, err := ioutil.ReadAll(req.Body)
@@ -60,7 +60,7 @@ func peopleFunc(w http.ResponseWriter, req *http.Request) {
 				peopleMap[newPerson.Name] = newPerson
 			}
 		} else {
-			fmt.Fprintf(w, "post request failed")
+			fmt.Fprintf(w, "Error occurred while attempting to read POST request body")
 		}
 
 	}
